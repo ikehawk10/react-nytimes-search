@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import _ from 'lodash';
 
 import './App.css';
 import Header from './components/Header';
@@ -13,12 +14,12 @@ class App extends Component {
     super();
 
     this.state = {
-      term: 'JavaScript',
+      term: '',
       results: []
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getArticles();
   }
 
@@ -28,7 +29,6 @@ class App extends Component {
     axios.get(url)
       .then(response => {
         this.setState({results: response.data.response.docs})
-        console.log(this.state.results, this.state.term)
       })
       .catch(error => {
         console.log(error);
@@ -36,11 +36,12 @@ class App extends Component {
   }
 
   updateSearch(term) {
-    this.setState({ term: term })
+    this.setState({ term })
     this.getArticles();
   }
 
   render() {
+    const articleSearch = _.debounce((term) => {this.updateSearch(term)}, 300)
     const { term, results } = this.state;
     return (
       <div className="container">
@@ -48,7 +49,7 @@ class App extends Component {
         <Search 
           term={term} 
           placeHolder="Search" 
-          updateSearch={this.updateSearch.bind(this)} 
+          updateSearch={articleSearch} 
           articleCount={results.length}/>
         <Articles articles={results} />
       </div>
