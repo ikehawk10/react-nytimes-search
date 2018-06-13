@@ -44,12 +44,12 @@ class App extends Component {
     const articleSearch = _.debounce((term) => {this.updateSearch(term)}, 300)
     const { term, results } = this.state;
     return (
-      <div className="container">
+      <div className="">
         <Header title="New York Times Search" />
-        <Search 
-          term={term} 
-          placeHolder="Search" 
-          updateSearch={articleSearch} 
+        <Search
+          term={term}
+          placeHolder="Search"
+          updateSearch={articleSearch}
           articleCount={results.length}/>
         <Articles articles={results} />
       </div>

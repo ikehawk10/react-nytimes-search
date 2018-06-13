@@ -5,7 +5,7 @@ const Article = props => {
 	let headline = props.article.headline.main
 	let { snippet, pub_date, web_url } = props.article
 	return (
-		<div className="well">
+		<div className="">
 			<h3>{headline}</h3>
 			<p>{snippet ? snippet : "No desciption available"}</p>
 			<p><a href={web_url}>See Full Article Here</a></p>

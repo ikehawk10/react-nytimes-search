@@ -18,9 +18,9 @@ class Search extends Component {
 		let {articleCount, placeHolder} = this.props
 		return(
 			<section>
-	  			<input 
-	  				type="text" 
-	  				className="form-control" 
+	  			<input
+	  				type="text"
+	  				className="" 
 	  				placeholder={placeHolder}
 	  				onChange={this.handleChange.bind(this)}/>
 	  				<p>Displaying {articleCount !== 1 ? `${articleCount} results` : `${articleCount} result`} </p>
