@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 
 class Search extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			term: this.props.term
-		}
-	}
 
 	handleChange(e) {
 		const term = e.target.value

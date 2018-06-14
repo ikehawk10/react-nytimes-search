@@ -14,7 +14,6 @@ class App extends Component {
     super();
 
     this.state = {
-      term: '',
       results: []
     };
   }
@@ -23,25 +22,34 @@ class App extends Component {
     this.getArticles();
   }
 
-  getArticles() {
-    let url = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${apiKey}&q=${this
-      .state.term}`;
-    axios.get(url)
-      .then(response => {
-        this.setState({results: response.data.results})
-      })
-      .catch(error => {
-        console.log(error);
-    });
-  }
+  getArticles(term) {
+    let url = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${apiKey}`;
 
-  updateSearch(term) {
-    this.setState({ term })
-    this.getArticles();
+    if (term) {
+      axios.get(url)
+        .then(response => {
+          let updatedResults = response.data.results.filter(article => {
+            return article.title.includes(term)
+          })
+         this.setState({results: updatedResults})
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    } else {
+        axios.get(url)
+          .then(response => {
+            this.setState({results: response.data.results})
+          })
+          .catch(error => {
+            console.log(error);
+        });
+    }
+
   }
 
   render() {
-    const articleSearch = _.debounce((term) => {this.updateSearch(term)}, 300)
+    const articleSearch = _.debounce((term) => {this.getArticles(term)}, 300)
     const { term, results } = this.state;
     return (
       <div className="">
