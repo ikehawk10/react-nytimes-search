@@ -63,15 +63,15 @@ class App extends Component {
     const { results } = this.state;
     return (
       <div className="container">
+        <Header title="New York Times Search" />
+        <hr/>
         <Search
           placeHolder="Search"
           updateSearch={articleSearch}
           articleCount={results.length}/>
-        <Header title="New York Times Search" />
         <Section 
           section={this.state.section}
           handleUpdate={this.updateSection}/>
-        <hr/>
         <Articles articles={results} />
       </div>
     );

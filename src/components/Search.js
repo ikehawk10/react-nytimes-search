@@ -10,10 +10,10 @@ class Search extends Component {
 	render() {
 		let { placeHolder} = this.props
 		return(
-			<section className="search">
+			<section>
 	  			<input
 	  				type="text"
-	  				className="" 
+	  				className="search" 
 	  				placeholder={placeHolder}
 	  				onChange={this.handleChange.bind(this)}/>
 			</section>

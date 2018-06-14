@@ -21,7 +21,7 @@ class Section extends Component {
 		const sectionOptions = ["home", "opinion", "world","national", "politics", "upshot", "nyregion", "business", "technology", "science", "health", "sports", "arts", "books", "movies", "theater", "sundayreview", "fashion", "tmagazine", "food", "travel", "magazine", "realestate" , "automobiles", "obituaries", "insider"];
 
 		return(
-			<form>
+			<form className="selection">
 		    <label>
 		      Sections: 
 		      <select value={this.state.section} onChange={this.handleChange}>

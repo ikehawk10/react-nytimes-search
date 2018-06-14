@@ -4,7 +4,16 @@
 }
 
 .search {
-	margin: 15px 0;
+  width: 270px;
+  margin: 10px 0;
+  height: 20px;
+  float: right;
+  font-size: 15px;
+}
+
+.selection {
+	margin: 20px 0;
+	height: 30px;
 }
 
 .header {
@@ -14,9 +23,14 @@
 
 .logo {
 	height: 100px;
+	text-align: center;	
 }
 
 .section {
 	text-align: center;
 	line-height: 30px;
+}
+
+.articles-list {
+	margin-top: 30px;
 }
