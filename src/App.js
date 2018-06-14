@@ -24,11 +24,11 @@ class App extends Component {
   }
 
   getArticles() {
-    let url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${apiKey}&q=${this
+    let url = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${apiKey}&q=${this
       .state.term}`;
     axios.get(url)
       .then(response => {
-        this.setState({results: response.data.response.docs})
+        this.setState({results: response.data.results})
       })
       .catch(error => {
         console.log(error);
@@ -45,6 +45,7 @@ class App extends Component {
     const { term, results } = this.state;
     return (
       <div className="">
+      {console.log(this.state.results)}
         <Header title="New York Times Search" />
         <Search
           term={term}
