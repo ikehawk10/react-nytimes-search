@@ -24,7 +24,7 @@ class Section extends Component {
 			<form className="selection">
 		    <label>
 		      Sections: 
-		      <select value={this.state.section} onChange={this.handleChange}>
+		      <select className="select-input" value={this.state.section} onChange={this.handleChange}>
 		      	{sectionOptions.map((section, i) => {
 		      		return <option key={i} value={section}>{section}</option>
 		      	})}
