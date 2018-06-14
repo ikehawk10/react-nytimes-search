@@ -14,8 +14,7 @@ class App extends Component {
     super();
 
     this.state = {
-      results: [],
-      term: ""
+      results: []
     };
   }
 
@@ -32,7 +31,7 @@ class App extends Component {
           let updatedResults = response.data.results.filter(article => {
             return article.title.toLowerCase().indexOf(term) !== -1
           })
-         this.setState({results: updatedResults})
+         this.setState({results: updatedResults.slice(0,10)})
         })
         .catch(error => {
           console.log(error);
@@ -40,7 +39,7 @@ class App extends Component {
     } else {
         axios.get(url)
           .then(response => {
-            this.setState({results: response.data.results})
+            this.setState({results: response.data.results.slice(0,10)})
           })
           .catch(error => {
             console.log(error);
@@ -51,13 +50,12 @@ class App extends Component {
 
   render() {
     const articleSearch = _.debounce((term) => {this.getArticles(term)}, 300)
-    const { term, results } = this.state;
+    const { results } = this.state;
     return (
       <div className="">
       {console.log(this.state.results)}
         <Header title="New York Times Search" />
         <Search
-          term={term}
           placeHolder="Search"
           updateSearch={articleSearch}
           articleCount={results.length}/>
