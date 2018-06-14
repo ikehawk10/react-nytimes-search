@@ -10,7 +10,7 @@ class Search extends Component {
 	render() {
 		let { placeHolder} = this.props
 		return(
-			<section>
+			<section className="search">
 	  			<input
 	  				type="text"
 	  				className="" 

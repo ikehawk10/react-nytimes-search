@@ -5,6 +5,7 @@ import _ from 'lodash';
 import './App.css';
 import Header from './components/Header';
 import Search from './components/Search';
+import Section from './components/Section';
 import Articles from './components/Articles';
 
 const apiKey = 'be5cc745c3c94ed9b9e7274a87544151';
@@ -14,8 +15,10 @@ class App extends Component {
     super();
 
     this.state = {
-      results: ""
+      results: "",
+      section: "home"
     };
+    this.updateSection = this.updateSection.bind(this);
   }
 
   componentWillMount() {
@@ -23,7 +26,7 @@ class App extends Component {
   }
 
   getArticles(term) {
-    let url = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${apiKey}`;
+    let url = `https://api.nytimes.com/svc/topstories/v2/${this.state.section}.json?api-key=${apiKey}`;
 
     if (term) {
       axios.get(url)
@@ -48,17 +51,27 @@ class App extends Component {
 
   }
 
+    updateSection(section) {
+      this.setState({section}, () => {
+        this.getArticles();
+      });
+      
+    }
+
   render() {
     const articleSearch = _.debounce((term) => {this.getArticles(term)}, 300)
     const { results } = this.state;
     return (
-      <div className="">
-      {console.log(this.state.results)}
-        <Header title="New York Times Search" />
+      <div className="container">
         <Search
           placeHolder="Search"
           updateSearch={articleSearch}
           articleCount={results.length}/>
+        <Header title="New York Times Search" />
+        <Section 
+          section={this.state.section}
+          handleUpdate={this.updateSection}/>
+        <hr/>
         <Articles articles={results} />
       </div>
     );
