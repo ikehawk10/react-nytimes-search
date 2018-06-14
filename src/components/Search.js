@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Search extends Component {
 
 	handleChange(e) {
-		const term = e.target.value
+		const term = e.target.value.toLowerCase();
 		this.props.updateSearch(term)
 	}
 

@@ -14,7 +14,8 @@ class App extends Component {
     super();
 
     this.state = {
-      results: []
+      results: [],
+      term: ""
     };
   }
 
@@ -29,7 +30,7 @@ class App extends Component {
       axios.get(url)
         .then(response => {
           let updatedResults = response.data.results.filter(article => {
-            return article.title.includes(term)
+            return article.title.toLowerCase().indexOf(term) !== -1
           })
          this.setState({results: updatedResults})
         })
