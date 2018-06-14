@@ -34,3 +34,14 @@
 .articles-list {
 	margin-top: 30px;
 }
+
+.article-result {
+	border: 1px solid grey;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.article-link {
+	color: grey;
+  text-decoration: none;
+}
