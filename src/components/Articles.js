@@ -3,6 +3,10 @@ import React from 'react';
 import Article from './Article';
 
 const Articles = ({articles}) => {
+	if (!articles) {
+		return <div>Loading...</div>
+	}
+
 	return (
 	  <div> 
 	    {articles.map(articles => {
@@ -10,6 +14,7 @@ const Articles = ({articles}) => {
 	    })}
 	  </div>
 	);
+	
 }
 
 export default Articles

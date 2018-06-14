@@ -8,7 +8,7 @@ class Search extends Component {
 	}
 
 	render() {
-		let {articleCount, placeHolder} = this.props
+		let { placeHolder} = this.props
 		return(
 			<section>
 	  			<input
@@ -16,7 +16,6 @@ class Search extends Component {
 	  				className="" 
 	  				placeholder={placeHolder}
 	  				onChange={this.handleChange.bind(this)}/>
-	  				<p>Displaying {articleCount !== 1 ? `${articleCount} results` : `${articleCount} result`} </p>
 			</section>
 		)
 	}

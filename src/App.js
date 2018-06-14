@@ -14,11 +14,11 @@ class App extends Component {
     super();
 
     this.state = {
-      results: []
+      results: ""
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getArticles();
   }
 
