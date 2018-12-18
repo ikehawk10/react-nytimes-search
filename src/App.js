@@ -18,14 +18,13 @@ class App extends Component {
       results: "",
       section: "home"
     };
-    this.updateSection = this.updateSection.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getArticles();
   }
 
-  getArticles(term) {
+  getArticles = term => {
     let url = `https://api.nytimes.com/svc/topstories/v2/${this.state.section}.json?api-key=${apiKey}`;
 
     if (term) {
@@ -51,7 +50,7 @@ class App extends Component {
 
   }
 
-    updateSection(section) {
+    updateSection = section => {
       this.setState({section}, () => {
         this.getArticles();
       });

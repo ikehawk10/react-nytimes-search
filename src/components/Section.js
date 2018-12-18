@@ -5,11 +5,9 @@ class Section extends Component {
 		super();
 
 		this.state = {section: "home"}
-
-		this.handleChange = this.handleChange.bind(this);
 	}
 
-	handleChange(e) {
+	handleChange = e => {
 		this.setState({section: e.target.value}, () => {
 			this.props.handleUpdate(this.state.section)
 		})
